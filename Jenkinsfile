@@ -7,7 +7,7 @@ pipeline {
                 echo 'building docker image...'
                 dir('kube-backend') {
                     script {
-                        imgback = docker.build("jenkins-pipeline-backend")
+                        imgback = docker.build("inshiraa/jenkins-pipeline-backend")
                     }    
                 }
             }
