@@ -16,7 +16,7 @@ pipeline {
             steps {
                 echo 'Push to dockerhub...'
                 script {
-                    docker.withRegistry(", 'inshira-dockerhub-cred') {
+                    docker.withRegistry('', 'inshira-dockerhub-cred') {
                         imgback.push()
                     }
                 }   
