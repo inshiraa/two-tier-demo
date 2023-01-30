@@ -10,6 +10,7 @@ pipeline {
                 '''
                 script {
                     docker.build("jenkins-pipeline-backend")
+                }    
             }
         }
         stage('test') {
