@@ -19,13 +19,8 @@ pipeline {
                     docker.withRegistry(", 'inshira-dockerhub-cred') {
                         imgback.push()
                     }
-                }                       
+                }   
             }
         }
-        stage('deploy') {
-            steps {
-                echo 'Deploying the project in EC2...'
-            }
-        }    
     }
 }
