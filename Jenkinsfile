@@ -7,14 +7,19 @@ pipeline {
                 echo 'building docker image...'
                 dir('kube-backend') {
                     script {
-                        docker.build("jenkins-pipeline-backend")
+                        imgback = docker.build("jenkins-pipeline-backend")
                     }    
                 }
             }
         }    
-        stage('test') {
+        stage('docker-push') {
             steps {
-                echo 'Testing the project...'
+                echo 'Push to dockerhub...'
+                script {
+                    docker.withRegistry(", 'inshira-dockerhub-cred') {
+                        imgback.push()
+                    }
+                }                       
             }
         }
         stage('deploy') {
