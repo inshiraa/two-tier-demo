@@ -28,7 +28,7 @@ pipeline {
         steps {
           echo 'Deploying to EC2...'
           sh'''
-               sshpass -e ssh -o StrictHostKeyChecking=no ubuntu@18.117.148.201 "docker stop cicd-test && docker rm cicd-test && docker rmi inshiraa/jenkins-pipeline-backend:latest && docker run -d --name cicd-test -p 5000:5000 inshira/jenkins-backend:latest"
+               sshpass -p hello123 ssh -o StrictHostKeyChecking=no ubuntu@18.117.148.201 "docker stop cicd-test && docker rm cicd-test && docker rmi inshiraa/jenkins-pipeline-backend:latest && docker run -d --name cicd-test -p 5000:5000 inshira/jenkins-backend:latest"
           '''
         }
     } 
