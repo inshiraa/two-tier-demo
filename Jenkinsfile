@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('build') {
+        stage('docker-build') {
             steps {
                 echo 'building docker image...'
-                sh'''
-                cd kube-backend
-                docker build -t pipeline-backend .
-                docker images
-                '''
+                dir('kube-backend') {
+                    script {
+                        docker.build("jenkins-pipeline-backend")
+                    }    
+                }
             }
-        }
+        }    
         stage('test') {
             steps {
                 echo 'Testing the project...'
