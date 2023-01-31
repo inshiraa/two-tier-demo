@@ -1,5 +1,6 @@
 pipeline {
   agent any
+  
   stages {
     stage('docker-build') {
       steps {
@@ -16,7 +17,7 @@ pipeline {
         echo 'Push to dockerhub...'
         script {
           docker.withRegistry('', 'inshira-dockerhub-cred') {
-            img.back.push()
+            imgback.push()
           }
         }
       }
