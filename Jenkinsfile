@@ -2,7 +2,15 @@ pipeline {
     agent any
 
     stages {
-      stage('pre-build') {
+        stage('source') {
+        steps {
+          echo 'cloning from github...'
+          sh'''
+          git clone --branch main --single-branch 'https://github.com/inshiraa/two-tier-demo.git' 
+          '''
+        }
+      } 
+        stage('pre-build') {
         steps {
           echo 'this is the pre-build stage...'
         }
